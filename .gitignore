@@ -3,6 +3,7 @@ __pycache__/
 *.py[codz]
 *$py.class
 abc.txt
+artifact
 
 # C extensions
 *.so

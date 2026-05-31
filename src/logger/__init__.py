@@ -33,7 +33,7 @@ def configure_logger():
     console_handler.setFormatter(formatter)
     
     #file handler
-    file_handler = logging.RotatingFileHandler(log_file_path, maxBytes=MAX_LOG_SIZE, backupCount=BACKUP_COUNT)
+    file_handler = RotatingFileHandler(log_file_path, maxBytes=MAX_LOG_SIZE, backupCount=BACKUP_COUNT)
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(formatter)
     
