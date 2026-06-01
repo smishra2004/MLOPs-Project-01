@@ -13,32 +13,26 @@ from src.exception import MyException
 from src.logger import logging
 from src.utils.main_utils import save_object, save_numpy_array_data, read_yaml_file
 
-
 class DataTransformation:
-    def __init__(self, data_ingestion_artifact: DataIngestionArtifact,
-                 data_transformation_config: DataTransformationConfig,
-                 data_validation_artifact: DataValidationArtifact):
+    def __init__(self,data_ingestion_artifact:DataIngestionArtifact,
+                 data_transformation_config:DataTransformationConfig,
+                 data_validation_artifact:DataValidationArtifact):
         try:
             self.data_ingestion_artifact = data_ingestion_artifact
             self.data_transformation_config = data_transformation_config
             self.data_validation_artifact = data_validation_artifact
             self._schema_config = read_yaml_file(file_path=SCHEMA_FILE_PATH)
         except Exception as e:
-            raise MyException(e, sys)
-
+            raise MyException(e,sys)
+    
     @staticmethod
     def read_data(file_path) -> pd.DataFrame:
         try:
             return pd.read_csv(file_path)
         except Exception as e:
             raise MyException(e, sys)
-
-    def get_data_transformer_object(self) -> Pipeline:
-        """
-        Creates and returns a data transformer object for the data, 
-        including gender mapping, dummy variable creation, column renaming,
-        feature scaling, and type adjustments.
-        """
+    
+    def get_data_transformer_object(self)->Pipeline:
         logging.info("Entered get_data_transformer_object method of DataTransformation class")
 
         try:
@@ -70,7 +64,7 @@ class DataTransformation:
         except Exception as e:
             logging.exception("Exception occurred in get_data_transformer_object method of DataTransformation class")
             raise MyException(e, sys) from e
-
+        
     def _map_gender_column(self, df):
         """Map Gender column to 0 for Female and 1 for Male."""
         logging.info("Mapping 'Gender' column to binary values")
