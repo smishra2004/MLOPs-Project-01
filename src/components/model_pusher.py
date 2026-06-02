@@ -45,5 +45,6 @@ class ModelPusher:
             logging.info("Exited initiate_model_pusher method of ModelTrainer class")
             
             return model_pusher_artifact
+        
         except Exception as e:
             raise MyException(e, sys) from e
