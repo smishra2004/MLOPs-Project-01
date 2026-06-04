@@ -47,4 +47,8 @@ logging.getLogger("pymongo.topology").setLevel(logging.WARNING)
 logging.getLogger("pymongo.connection").setLevel(logging.WARNING)
 logging.getLogger("pymongo.serverSelection").setLevel(logging.WARNING)
 logging.getLogger("pymongo.command").setLevel(logging.WARNING)
+logging.getLogger('boto3').setLevel(logging.WARNING)
+logging.getLogger('botocore').setLevel(logging.WARNING)
+logging.getLogger('urllib3').setLevel(logging.WARNING)
+logging.getLogger('s3transfer').setLevel(logging.WARNING)
     
