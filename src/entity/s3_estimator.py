@@ -47,8 +47,7 @@ class Proj1Estimator:
             self.s3.upload_file(from_file,
                                 to_filename=self.model_path,
                                 bucket_name=self.bucket_name,
-                                remove=remove
-                                )
+                                remove=remove)
         except Exception as e:
             raise MyException(e, sys)
 
