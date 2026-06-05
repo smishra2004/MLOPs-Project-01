@@ -146,8 +146,8 @@ vehicle-insurance-mlops/
 ├── Dockerfile
 ├── .github/workflows/aws.yaml  # CI/CD pipeline definition
 ├── requirements.txt
-├── setup.py
-└── pyproject.toml
+├── setup.py                  # Create Initial project template
+└── pyproject.toml            # Importing local packages in setup.py
 ```
 
 ---
