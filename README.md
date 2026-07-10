@@ -1,282 +1,289 @@
-# 🚗 Vehicle Insurance Risk Prediction — End-to-End MLOps Pipeline
+# 🚀 GrowEasy AI CSV Importer — Full-Stack AI Data Pipeline
 
-[![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)](https://python.org)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?logo=mongodb&logoColor=white)](https://www.mongodb.com/atlas)
-[![AWS](https://img.shields.io/badge/AWS-S3%20%7C%20EC2%20%7C%20ECR%20%7C%20IAM-orange?logo=amazonaws&logoColor=white)](https://aws.amazon.com)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js&logoColor=white)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Node.js](https://img.shields.io/badge/Node.js-20-green?logo=node.js&logoColor=white)](https://nodejs.org)
 [![Docker](https://img.shields.io/badge/Docker-Containerized-blue?logo=docker&logoColor=white)](https://docker.com)
-[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-black?logo=githubactions&logoColor=white)](https://github.com/features/actions)
-[![Flask](https://img.shields.io/badge/Flask-REST%20API-lightgrey?logo=flask&logoColor=black)](https://flask.palletsprojects.com)
+[![Gemini](https://img.shields.io/badge/AI-Google_Gemini-orange?logo=google&logoColor=white)](https://ai.google.dev)
+[![Tailwind](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 
 ---
 
-## 📌 Project Overview
+# 📌 Project Overview
 
-A **production-grade, end-to-end Machine Learning pipeline** that predicts vehicle insurance risk, built with a full MLOps lifecycle — from raw data ingestion through cloud model deployment. This project demonstrates the ability to architect, build, and deploy scalable ML systems that mirror real-world industry workflows.
+A **production-grade, full-stack application** designed to seamlessly extract, validate, and map unstructured CRM lead data into a strict database schema using Large Language Models. This project demonstrates the ability to build intelligent systems and scalable AI solutions that create real-world impact and drive innovation.
 
-> **Business Value:** Enables insurance companies to automate risk classification, reduce manual underwriting effort, and deploy continuously improving models — cutting assessment time and improving pricing accuracy.
+> **Business Value:** Solves the classic problem of messy, unpredictable user data. Instead of relying on brittle Regular Expressions, it leverages AI to intelligently read raw CSV rows, accurately identify overflow data, enforce strict formatting, and output clean JSON ready for CRM database insertion.
 
 ---
 
-## 🏗️ System Architecture
+# 🏗️ System Architecture
 
-```
-MongoDB Atlas (Raw Data)
-        │
-        ▼
-┌───────────────────┐
-│   Data Ingestion  │ ──► Pulls & validates data from cloud NoSQL store
-└───────────────────┘
-        │
-        ▼
-┌───────────────────┐
-│  Data Validation  │ ──► Schema checks, drift detection, data quality gates
-└───────────────────┘
-        │
-        ▼
-┌──────────────────────┐
-│ Data Transformation  │ ──► Feature engineering, encoding, scaling pipelines
-└──────────────────────┘
-        │
-        ▼
-┌───────────────────┐
-│   Model Trainer   │ ──► Training with experiment tracking
-└───────────────────┘
-        │
-        ▼
-┌──────────────────────┐
-│  Model Evaluation    │ ──► Threshold-based comparison vs. production model
-└──────────────────────┘
-        │
-        ▼
-┌───────────────────┐
-│   Model Pusher    │ ──► Registers & pushes champion model to AWS S3
-└───────────────────┘
+```text
+Messy CSV File (Raw Data)
         │
         ▼
 ┌──────────────────────────────┐
-│  Flask REST API (app.py)     │ ──► /predict & /training endpoints
+│  Next.js UI (Drag & Drop)    │ ──► File ingestion & user interaction
 └──────────────────────────────┘
         │
         ▼
-┌──────────────────────────────────────────────────┐
-│  Docker → AWS ECR → AWS EC2 (Ubuntu + CI/CD)     │
-└──────────────────────────────────────────────────┘
+┌──────────────────────────────┐
+│ Node.js Backend (app.ts)     │ ──► Receives file via Multer middleware
+└──────────────────────────────┘
+        │
+        ▼
+┌──────────────────────────────┐
+│  Data Parsing (PapaParse)    │ ──► Converts CSV text to iterable arrays
+└──────────────────────────────┘
+        │
+        ▼
+┌──────────────────────────────┐
+│   Gemini AI Service          │ ──► Fuzzy matching & strict schema extraction
+└──────────────────────────────┘
+        │
+        ▼
+┌──────────────────────────────┐
+│ Validation & Formatting      │ ──► Applies "-" fallbacks and strict JSON formatting
+└──────────────────────────────┘
+        │
+        ▼
+┌──────────────────────────────┐
+│ Next.js Virtualized Table    │ ──► Renders 1000s of rows without DOM lag
+└──────────────────────────────┘
 ```
 
 ---
 
-## 🔧 Tech Stack
+# 🔧 Tech Stack
 
 | Layer | Technology |
-|---|---|
-| **Language** | Python 3.10 |
-| **ML & Data** | Scikit-learn, Pandas, NumPy |
-| **Data Store** | MongoDB Atlas (cloud NoSQL) |
-| **Model Registry** | AWS S3 |
-| **Compute** | AWS EC2 (Ubuntu 24.04) |
-| **Container Registry** | AWS ECR |
-| **Containerization** | Docker |
-| **CI/CD** | GitHub Actions (self-hosted EC2 runner) |
-| **Web Framework** | Flask |
-| **Package Management** | Conda + pip, `setup.py` + `pyproject.toml` |
-| **Cloud IAM** | AWS IAM (least-privilege access keys) |
-| **Config Management** | YAML schema, environment variables |
+|--------|------------|
+| **Frontend Framework** | Next.js (App Router), React, TypeScript |
+| **Styling & Theming** | Tailwind CSS v4, next-themes (Dark Mode) |
+| **UI Optimization** | @tanstack/react-virtual |
+| **Backend Framework** | Node.js, Express, TypeScript |
+| **File Processing** | Multer, PapaParse |
+| **AI Engine** | Google Generative AI (gemini-2.5-flash) |
+| **Containerization** | Docker, Docker Compose |
+| **Architecture** | Strict OOP (Controllers, Services, Interfaces) |
 
 ---
 
-## 🚀 Key Features & Engineering Decisions
+# 🚀 Key Features & Engineering Decisions
 
-### ✅ Modular Pipeline Architecture
-Each pipeline stage (ingestion → validation → transformation → training → evaluation → pushing) is an independent, reusable component with dedicated `Config` and `Artifact` entity classes — enabling isolated testing, easy debugging, and clean handoffs between stages.
+## ✅ AI-Powered Data Extraction
 
-### ✅ Cloud-Native Data Layer
-Raw data lives in **MongoDB Atlas**, pulled programmatically at runtime. This eliminates static file dependencies, mirrors real enterprise data architectures, and enables the pipeline to always work with the latest data.
-
-### ✅ Automated Model Governance
-The **Model Evaluation** component compares newly trained models against the current production model in S3. A model only gets promoted if it improves performance by a configurable threshold (`MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE = 0.02`), preventing regressions from reaching production.
-
-### ✅ CI/CD with Self-Hosted Runner
-A GitHub Actions workflow triggers on every push — building a Docker image, pushing it to **AWS ECR**, and deploying to an **AWS EC2** instance via a self-hosted runner. Zero manual deployment steps.
-
-### ✅ Clean Package Structure
-The project is installable as a local Python package via `setup.py` and `pyproject.toml`, enabling clean imports across modules and following software engineering best practices beyond notebook-style code.
-
-### ✅ Structured Logging & Custom Exception Handling
-All pipeline stages use a centralized logger and custom exception class — making debugging across distributed components significantly faster.
+Uses advanced prompt engineering to fuzzy-match columns, extract names/dates, and intelligently consolidate multiple phone numbers or emails into a `crm_note` overflow field.
 
 ---
 
-## 📂 Project Structure
+## ✅ Virtualized Data Tables
 
-```
-vehicle-insurance-mlops/
+Employs **@tanstack/react-virtual** on the frontend to calculate absolute positioning for rows. This allows the application to render massive CSV previews without freezing the browser DOM, ensuring smooth scrolling.
+
+---
+
+## ✅ Strict Schema Validation
+
+Enforces constrained outputs for specific CRM statuses (e.g., `GOOD_LEAD_FOLLOW_UP`) and data sources (e.g., `meridian_tower`).
+
+Automatically skips records that lack both a valid email and phone number to preserve database integrity.
+
+---
+
+## ✅ Smart Batching & Error Handling
+
+Processes large CSVs in manageable chunks, strips out markdown formatting, and catches AI parsing errors to ensure pure, usable JSON is always returned to the client.
+
+---
+
+## ✅ Production-Ready UI
+
+Features a fully responsive drag-and-drop interface with a seamless Dark/Light mode toggle, utilizing Tailwind CSS v4's modern utility classes and CSS variables.
+
+---
+
+# 📂 Project Structure
+
+```text
+ai-csv-parser/
 │
-├── src/
-│   ├── components/           # Pipeline stage implementations
-│   │   ├── data_ingestion.py
-│   │   ├── data_validation.py
-│   │   ├── data_transformation.py
-│   │   ├── model_trainer.py
-│   │   ├── model_evaluation.py
-│   │   └── model_pusher.py
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   └── globals.css
+│   │   │
+│   │   └── components/
+│   │       ├── ResultTable.tsx
+│   │       └── TablePreview.tsx
 │   │
-│   ├── configuration/        # Service connection configs
-│   │   ├── mongo_db_connections.py
-│   │   └── aws_connection.py
-│   │
-│   ├── entity/               # Config & Artifact dataclasses
-│   │   ├── config_entity.py
-│   │   ├── artifact_entity.py
-│   │   ├── estimator.py
-│   │   └── s3_estimator.py
-│   │
-│   ├── pipeline/             # Training & prediction pipeline orchestration
-│   ├── data_access/          # MongoDB data fetch & transformation
-│   ├── aws_storage/          # S3 push/pull utilities
-│   ├── constants/            # Global constants (env keys, thresholds, paths)
-│   └── utils/                # Shared utility functions
+│   ├── Dockerfile
+│   └── tailwind.config.ts
 │
-├── config/
-│   └── schema.yaml           # Dataset schema for validation
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── services/
+│   │   │   ├── GeminiAiService.ts
+│   │   │   └── LeadProcessor.ts
+│   │   ├── routes/
+│   │   └── index.ts
+│   │
+│   ├── Dockerfile
+│   └── .env
 │
-├── notebook/                 # EDA & Feature Engineering notebooks
-├── static/ & templates/      # Flask frontend assets
-├── app.py                    # Flask app with /predict and /training routes
-├── demo.py                   # Local pipeline test runner
-├── Dockerfile
-├── .github/workflows/aws.yaml  # CI/CD pipeline definition
-├── requirements.txt
-├── setup.py                  # Create Initial project template
-└── pyproject.toml            # Importing local packages in setup.py
+├── docker-compose.yml
+└── README.md
 ```
 
 ---
 
-## ⚙️ Local Setup
+# ⚙️ Local Setup (Dockerized)
 
-### 1. Clone & Create Environment
+## 1. Clone the Repository
+
 ```bash
-git clone https://github.com/<your-username>/vehicle-insurance-mlops.git
-cd vehicle-insurance-mlops
+git clone https://github.com/<your-username>/ai-csv-parser.git
 
-conda create -n vehicle python=3.10 -y
-conda activate vehicle
-pip install -r requirements.txt
-```
-
-### 2. Set Environment Variables
-```bash
-# MongoDB
-export MONGODB_URL="mongodb+srv://<username>:<password>@cluster.mongodb.net"
-
-# AWS Credentials
-export AWS_ACCESS_KEY_ID="<your-access-key>"
-export AWS_SECRET_ACCESS_KEY="<your-secret-key>"
-export AWS_DEFAULT_REGION="us-east-1"
-```
-
-### 3. Run Training Pipeline
-```bash
-python demo.py
-```
-
-### 4. Launch Prediction API
-```bash
-python app.py
-# Visit: http://localhost:5080
+cd ai-csv-parser
 ```
 
 ---
 
-## ☁️ Cloud Infrastructure Setup
+## 2. Set Environment Variables
 
-### MongoDB Atlas
-1. Create an M0 cluster on [MongoDB Atlas](https://www.mongodb.com/atlas)
-2. Whitelist IP `0.0.0.0/0` under Network Access
-3. Copy the connection string and set as `MONGODB_URL`
+Create a `.env` file inside the backend directory.
 
-### AWS Services
-| Service | Purpose |
-|---|---|
-| **IAM** | Scoped user with `AdministratorAccess` + access key pair |
-| **S3** (`my-model-mlopsproj`) | Model registry — stores versioned model artifacts |
-| **ECR** (`vehicleproj`) | Docker image repository for deployment |
-| **EC2** (Ubuntu 24.04, T2 Medium) | Production server hosting the Flask app |
-
-### EC2 Docker Install
 ```bash
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo usermod -aG docker ubuntu
-newgrp docker
+cd backend
+
+touch .env
+```
+
+Add the following:
+
+```env
+PORT=5000
+GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
 ---
 
-## 🔄 CI/CD Pipeline
+## 3. Build & Run Containers
 
-```
-Git Push → GitHub Actions Triggered
-               │
-               ▼
-     Build Docker Image
-               │
-               ▼
-     Push Image to AWS ECR
-               │
-               ▼
-  Pull & Run on EC2 via Self-Hosted Runner
-               │
-               ▼
-    App Live at <EC2-IP>:5080
-```
+```bash
+cd ..
 
-**GitHub Secrets required:**
-```
-AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY
-AWS_DEFAULT_REGION
-ECR_REPO
+docker compose up --build
 ```
 
 ---
 
-## 📊 API Endpoints
+## 4. Launch the Application
+
+**Frontend**
+
+```text
+http://localhost:3000
+```
+
+**Backend**
+
+```text
+http://localhost:5000
+```
+
+---
+
+# 🧪 Testing the Pipeline
+
+### Upload Data
+
+Drag and drop a raw CSV file onto the web interface.
+
+### Preview
+
+Review the parsed table data.
+
+### Extract
+
+Click to send the data to the backend `/api/upload` endpoint.
+
+### Verify
+
+Inspect the final virtualized table to confirm the AI correctly mapped fields like Source, formatted dates, and aggregated overflow data into the Notes column.
+
+---
+
+# 📊 API Endpoints
 
 | Endpoint | Method | Description |
-|---|---|---|
-| `/` | GET | Home page with prediction form |
-| `/predict` | POST | Returns risk prediction for input vehicle data |
-| `/training` | GET | Triggers full retraining pipeline on-demand |
+|----------|--------|-------------|
+| `/api/upload` | `POST` | Accepts multipart/form-data (CSV file), parses, batches, AI-extracts, and returns mapped CRM JSON records. |
 
 ---
 
-## 🧠 ML Pipeline Details
+# 🧠 AI Pipeline Details
 
-- **EDA & Feature Engineering** documented in `/notebook`
-- **Schema validation** enforced via `config/schema.yaml` — catches upstream data issues before they corrupt training
-- **Model evaluation threshold** prevents degraded models from reaching production (configurable at `MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE`)
-- **S3 model key** (`model-registry`) enables versioned model management and rollback capability
+### Constrained Outputs
+
+The system prompt strictly forces Gemini to choose from a predefined list of allowed CRM statuses and source projects. If no valid match exists, it safely falls back to a blank string (displayed as `-` on the frontend).
 
 ---
 
-## 🌱 What This Project Demonstrates
+### Data Preservation
+
+The AI captures the primary email and phone number for indexing while preserving additional contact information and miscellaneous comments inside the `crm_note` field, ensuring no valuable data is lost.
+
+---
+
+### Date Formatting
+
+Normalizes inconsistent date formats such as:
+
+- `Yesterday`
+- `12th May`
+- `May 12`
+- `12/05/2025`
+
+into standardized **YYYY-MM-DD** ISO-compatible strings.
+
+---
+
+# 🌱 What This Project Demonstrates
 
 | Skill Area | Demonstrated By |
-|---|---|
-| **MLOps Engineering** | Full pipeline with automated retraining, evaluation gates, and model registry |
-| **Cloud Architecture** | Multi-service AWS setup (S3, EC2, ECR, IAM) with least-privilege access |
-| **Software Engineering** | Modular OOP design, custom packaging, centralized config/logging/exceptions |
-| **DevOps** | Dockerized application with GitHub Actions CI/CD to cloud infrastructure |
-| **Data Engineering** | Cloud NoSQL integration (MongoDB Atlas), schema validation, transformation pipelines |
-| **Production Thinking** | Threshold-based model governance, environment variable management, port configuration |
+|------------|-----------------|
+| **Full-Stack Engineering** | Seamless integration between a Next.js frontend and a Node.js REST API |
+| **AI Integration** | Practical application of LLMs for intelligent data transformation instead of RegEx |
+| **Frontend Performance** | Windowing and virtualization for rendering massive datasets efficiently |
+| **DevOps & Infrastructure** | Dockerized multi-container architecture with Docker Compose |
+| **Industry Readiness** | Clean architecture, production-ready UI, error handling, and scalable design |
 
 ---
 
-## 📄 License
+# 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
 
 ---
 
-> Built to production standards — not just to run in a notebook.
+## 💡 Highlights
+
+- 🤖 AI-powered CRM data extraction
+- 📦 Dockerized full-stack architecture
+- ⚡ Virtualized rendering for large datasets
+- 🎯 Strict schema validation
+- 🧠 Intelligent prompt engineering
+- 🌙 Dark/Light theme support
+- 📁 Drag-and-drop CSV uploads
+- 🛡️ Robust error handling
+- 🚀 Production-ready architecture
+- 📈 Scalable AI data processing pipeline
+
+---
+
+> **Built to production standards — demonstrating scalable AI-powered data processing, modern full-stack engineering, and intelligent automation.**
